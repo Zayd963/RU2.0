@@ -21,6 +21,7 @@
 #include "Tests/TestTexture2D.h"
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw_gl3.h>
+#include "Scene/TestsSceneOne.h"
 int main(void)
 {
     GLFWwindow* window;
@@ -57,12 +58,9 @@ int main(void)
     ImGui_ImplGlfwGL3_Init(window, true);
     ImGui::StyleColorsDark();
 
-    Test::Test* currentTest = nullptr;
-    Test::TestMenu* menu = new Test::TestMenu(currentTest);
-    currentTest = menu;
+    TestsSceneOne* scene = nullptr;
 
-    menu->RegisterTest<Test::TestClearColor>("Clear Color");
-    menu->RegisterTest<Test::TestTexture2D>("Texture Test");
+    scene = new TestsSceneOne();
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -70,27 +68,16 @@ int main(void)
         GLCall(glClearColor(0.0f, 0.f, 0.f, 1.f));
         /* Render here */
         renderer.Clear();
-
-      
+        
+        scene->Update(0);
+        scene->Render();
 
         ImGui_ImplGlfwGL3_NewFrame();
      
-        if (currentTest)
-        {
-            currentTest->Update(0);
-            currentTest->Render();
-            ImGui::Begin("test");
-            if (currentTest != menu && ImGui::Button("<-"))
-            {
-                delete currentTest;
-                currentTest = menu;
-            }
-            currentTest->IMGUIRender();
-            ImGui::End();
 
-        }
-
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+        ImGui::Begin("");
+        scene->IMGUIRender();
+        ImGui::End();
       
         ImGui::Render();
         ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
