@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene/Scene.h"
-#include "Renderer.h"
+#include "core/Renderer.h"
 #include "imgui/imgui.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include "Texture.h"
+#include "core/Texture.h"
 #include <memory>
 class TestsSceneOne : public Scene
 {

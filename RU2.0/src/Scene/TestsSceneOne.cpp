@@ -1,4 +1,5 @@
 #include "TestsSceneOne.h"
+#include <iostream>
 
 TestsSceneOne::TestsSceneOne()
 {
@@ -7,7 +8,14 @@ TestsSceneOne::TestsSceneOne()
          -50.f, -50.0f, 0.0f, 0.0f, 0.0f,
           50.f, -50.0f, 0.0f, 1.0f, 0.0f,
           50.f,  50.0f, 0.0f, 1.0f, 1.0f,
-         -50.f,  50.0f, 0.0f, 0.0f, 1.0f
+         -50.f,  50.0f, 0.0f, 0.0f, 1.0f,
+
+         100.f, -50.0f, 0.0f, 0.0f, 0.0f,
+         300.f, -50.0f, 0.0f, 1.0f, 0.0f,
+         300.f,  50.0f, 0.0f, 1.0f, 1.0f,
+         100.f,  50.0f, 0.0f, 0.0f, 1.0f
+
+
 
     };
 
@@ -16,18 +24,20 @@ TestsSceneOne::TestsSceneOne()
         0, 1, 2,
         2, 3, 0,
 
+        4, 5, 6,
+        6, 7, 4
+
     };
 
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
     GLCall(glEnable(GL_BLEND));
 
     shader = std::make_unique<Shader>("res/shaders/Basic.Shader");
-    ibo = std::make_unique<IndexBuffer>(indicies, 6);
+    ibo = std::make_unique<IndexBuffer>(indicies, 12);
     vao = std::make_unique<VertexArray>();
     texture = std::make_unique<Texture>("res/textures/DefaultTexture.png");
 
-
-    vbo = std::make_unique<VertexBuffer>(positions, 5 * 4 * sizeof(float));
+    vbo = std::make_unique<VertexBuffer>(positions, 5 * 8 * sizeof(float));
 
     VertexBufferLayout layout;
     layout.Push<float>(3);
