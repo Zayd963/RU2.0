@@ -1,2 +1,8 @@
-﻿  Engine.cpp
+﻿  TestsSceneOne.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include\memory(3416,56): warning C4244: 'argument': conversion from '_Ty' to 'unsigned int', possible loss of data
+          with
+          [
+              _Ty=unsigned __int64
+          ]
+C:\Dev\RU2.0\RU2.0\src\Scene\TestsSceneOne.cpp(84): message : see reference to function template instantiation 'std::unique_ptr<VertexBuffer,std::default_delete<VertexBuffer>> std::make_unique<VertexBuffer,Vertex(&)[8],unsigned __int64,0>(Vertex (&)[8],unsigned __int64 &&)' being compiled
   RU2.0.vcxproj -> C:\Dev\RU2.0\x64\Debug\RU2.0.exe

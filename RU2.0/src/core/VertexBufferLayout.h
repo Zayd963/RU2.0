@@ -16,6 +16,7 @@ struct VertexBufferElement
 		switch (type)
 		{
 		case GL_FLOAT: return 4;
+		case GL_INT: return 4;
 		}
 		
 		ASSERT(false);
@@ -47,6 +48,13 @@ public:
 	{
 		elements.push_back({ GL_FLOAT, count, GL_FALSE });
 		stride += VertexBufferElement::GetSizeOfType(GL_FLOAT) * count;
+	}
+
+	template<>
+	void Push<int>(unsigned int count)
+	{
+		elements.push_back({ GL_INT, count, GL_FALSE });
+		stride += VertexBufferElement::GetSizeOfType(GL_INT) * count;
 	}
 
 	inline std::vector<VertexBufferElement> GetElements() const& { return  elements; }
