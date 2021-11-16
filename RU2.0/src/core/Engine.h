@@ -12,5 +12,6 @@ public:
 	static void Shutdown();
 private:
 	static GLFWwindow* window;
+
 };
 

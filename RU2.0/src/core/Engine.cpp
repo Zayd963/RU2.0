@@ -26,9 +26,13 @@ void Engine::Init()
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
     GLCall(glEnable(GL_BLEND));
 
+    glfwSwapInterval(1);
+    
     ImGui::CreateContext();
     ImGui_ImplGlfwGL3_Init(window, true);
     ImGui::StyleColorsDark();
+
+  
 }
 
 void Engine::Update()
@@ -39,10 +43,12 @@ void Engine::Update()
 void Engine::Render()
 {
 
-    TestsSceneOne* scene = new TestsSceneOne();
+    
     Renderer renderer;
+    TestsSceneOne* scene = new TestsSceneOne();
     while (!glfwWindowShouldClose(window))
     {
+        
         GLCall(glClearColor(0.0f, 0.f, 0.f, 1.f));
         /* Render here */
         renderer.Clear();
