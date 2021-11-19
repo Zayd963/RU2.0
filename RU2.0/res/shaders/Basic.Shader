@@ -25,11 +25,11 @@ layout(location = 0) out vec4 color;
 
 in vec2 v_TexCoord;
 in float v_TexIndex;
-uniform sampler2D u_Texture[2];
+uniform sampler2D u_Texture[32];
 
 void main() 
 { 
-	int index = int(v_TexIndex);
+	int index = int(round(v_TexIndex));
 	
 	vec4 texColor = texture(u_Texture[index], v_TexCoord);
 	color = texColor;

@@ -28,6 +28,6 @@ private:
 	std::unique_ptr<Shader> shader;
 	std::unique_ptr<Texture> texture;
 	std::unique_ptr<Texture> texture1;
-	//std::unique_ptr<Texture> texture2;
+	std::unique_ptr<Texture> texture2;
 };
 

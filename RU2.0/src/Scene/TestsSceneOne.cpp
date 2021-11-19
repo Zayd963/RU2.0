@@ -62,7 +62,7 @@ TestsSceneOne::TestsSceneOne()
 
     auto q0 = CreateQuad({ -50, -50 }, 0);
     auto q1 = CreateQuad({ 100, 100 }, 1);
-    auto q2 = CreateQuad({ 250, -50 }, 1);
+    auto q2 = CreateQuad({ 250, -50 }, 2);
 
  
 
@@ -93,7 +93,7 @@ TestsSceneOne::TestsSceneOne()
     vao = std::make_unique<VertexArray>();
     texture = std::make_unique<Texture>("res/textures/DefaultTexture.png");
     texture1 = std::make_unique<Texture>("res/textures/Study#1.png");
-    //texture2 = std::make_unique<Texture>("res/textures/Star.png");
+    texture2 = std::make_unique<Texture>("res/textures/Star.png");
 
     vbo = std::make_unique<VertexBuffer>(positions, sizeof(Vertex) * 12);
 
@@ -113,8 +113,13 @@ TestsSceneOne::TestsSceneOne()
 
     texture->Bind();
     texture1->Bind(1);
-    int samplers[2] = { 1, 0};
-    shader->SetUniform1iv("u_Texture", samplers, 2);
+    texture2->Bind(2);
+    int samplers[32];
+    for (int i = 0; i < 32; i++)
+    {
+        samplers[i] = i;
+    }
+    shader->SetUniform1iv("u_Texture", samplers, 32);
 
 }
 
