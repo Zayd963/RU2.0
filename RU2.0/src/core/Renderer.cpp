@@ -12,5 +12,6 @@ void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& 
 
 void Renderer::Clear() const
 {
+	GLCall(glClearColor(0.1, 0.1, 0.1, 0.1));
 	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }
