@@ -1,8 +1,9 @@
 #include "Engine.h"
 #include "Scene/TestsSceneOne.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
+#include "Debug.h"
 GLFWwindow* Engine::window = nullptr;
-
+bool Engine::ShutDown = false;
 void Engine::Init()
 {
     /* Initialize the library */
@@ -72,6 +73,7 @@ void Engine::Render()
         /* Poll for and process events */
         glfwPollEvents();
     }
+    delete scene;
 }
 
 void Engine::Shutdown()

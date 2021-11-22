@@ -26,5 +26,5 @@ void VertexBuffer::UnBind() const
 
 VertexBuffer::~VertexBuffer()
 {
-    GLCall(glDeleteBuffers(1, &rendererID));
+    (glDeleteBuffers(1, &rendererID));
 }

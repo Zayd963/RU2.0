@@ -6,6 +6,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "core/Texture.h"
 #include <memory>
+#include "core/Renderer2D.h"
 #include "core/Camera.h"
 
 
@@ -18,7 +19,7 @@ public:
 	void Render() override;
 	void IMGUIRender() override;
 
-	~TestsSceneOne() {};
+	~TestsSceneOne() { Renderer2D::ShutDown(); };
 	
 private:
 	std::unique_ptr<Texture> texture;

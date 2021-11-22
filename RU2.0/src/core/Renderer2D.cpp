@@ -22,14 +22,22 @@ void Renderer2D::Init()
 		indexOffset += 4;
 	}
 
+
+
 	data.shader = std::make_unique<Shader>("res/shaders/Basic.Shader");
 	data.ibo = std::make_unique<IndexBuffer>(indicies, data.maxIndicies);
 	data.vao = std::make_unique<VertexArray>();
 	data.vbo = std::make_unique<VertexBuffer>(sizeof(Vertex) * data.maxVerticies);
 
+	data.whiteTexture = std::make_unique<Texture>(1, 1);
+	uint32_t texData = 0xffffffff;
+
+	data.whiteTexture->SetData(&texData);
+
 	VertexBufferLayout layout;
 	layout.Push<float>(3);
 	layout.Push<float>(2);
+	layout.Push<float>(4);
 	layout.Push<float>(1);
 	data.vao->AddBuffer(*data.vbo, layout);
 
@@ -43,7 +51,7 @@ void Renderer2D::Init()
 	data.vao->Bind();
 	data.vbo->Bind();
 	data.shader->SetUniform1iv("u_Texture", samplers, 32);
-
+	
 	
 }
 
@@ -59,6 +67,7 @@ void Renderer2D::DrawQuad(glm::vec3 _position, float size, float _texIndex)
 	v0.position = { _position.x, _position.y , 1.0f };
 	v0.texCoord = { 0.f, 0.f };
 	v0.texIndex = _texIndex;
+	v0.color = glm::vec4(1.0f);
 	memcpy(renderData + offset, &v0, sizeof(v0));
 	offset++;
 
@@ -66,6 +75,7 @@ void Renderer2D::DrawQuad(glm::vec3 _position, float size, float _texIndex)
 	v1.position = { _position.x + size, _position.y , 1.0f };
 	v1.texCoord = { 1.f, 0.f };
 	v1.texIndex = _texIndex;
+	v1.color = glm::vec4(1.0f);
 	memcpy(renderData + offset, &v1, sizeof(v0));
 	offset++;
 
@@ -73,6 +83,7 @@ void Renderer2D::DrawQuad(glm::vec3 _position, float size, float _texIndex)
 	v2.position = { _position.x + size, _position.y + size , 1.0f };
 	v2.texCoord = { 1.f, 1.f };
 	v2.texIndex = _texIndex;
+	v2.color = glm::vec4(1.0f);
 	memcpy(renderData + offset, &v2, sizeof(v0));
 	offset++;
 
@@ -80,6 +91,42 @@ void Renderer2D::DrawQuad(glm::vec3 _position, float size, float _texIndex)
 	v3.position = { _position.x, _position.y + size , 1.0f };
 	v3.texCoord = { 0.f, 1.f };
 	v3.texIndex = _texIndex;
+	v3.color = glm::vec4(1.0f);
+	memcpy(renderData + offset, &v3, sizeof(v0));
+	offset++;
+}
+
+void Renderer2D::DrawQuad(glm::vec3 _position, float size, glm::vec4 color)
+{
+	Vertex v0;
+	v0.position = { _position.x, _position.y , 1.0f };
+	v0.texCoord = { 0.f, 0.f };
+	v0.texIndex = 0;
+	v0.color = color;
+	memcpy(renderData + offset, &v0, sizeof(v0));
+	offset++;
+
+	Vertex v1;
+	v1.position = { _position.x + size, _position.y , 1.0f };
+	v1.texCoord = { 1.f, 0.f };
+	v1.texIndex = 0;
+	v1.color = color;
+	memcpy(renderData + offset, &v1, sizeof(v0));
+	offset++;
+
+	Vertex v2;
+	v2.position = { _position.x + size, _position.y + size , 1.0f };
+	v2.texCoord = { 1.f, 1.f };
+	v2.texIndex = 0;
+	v2.color = color;
+	memcpy(renderData + offset, &v2, sizeof(v0));
+	offset++;
+
+	Vertex v3;
+	v3.position = { _position.x, _position.y + size , 1.0f };
+	v3.texCoord = { 0.f, 1.f };
+	v3.texIndex = 0;
+	v3.color = color;
 	memcpy(renderData + offset, &v3, sizeof(v0));
 	offset++;
 }
@@ -88,6 +135,11 @@ void Renderer2D::End()
 {
 	data.vbo->SetData(renderData, sizeof(Vertex) * data.maxVerticies);
 	Flush();
+}
+
+void Renderer2D::ShutDown()
+{
+	
 }
 
 void Renderer2D::Flush()

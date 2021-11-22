@@ -33,5 +33,5 @@ void VertexArray::UnBind() const
 
 VertexArray::~VertexArray()
 {
-	GLCall(glDeleteVertexArrays(1, &rendererID));
+	(glDeleteVertexArrays(1, &rendererID));
 }

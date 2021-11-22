@@ -14,9 +14,12 @@ private:
 	int BPP;
 public:
 	Texture(const std::string& _filepath);
+	Texture(const unsigned int _height, const unsigned int _width);
 
 	void Bind(unsigned int slot = 0) const;
 	void UnBind() const;
+
+	void SetData(const void* data);
 
 	inline int GetWidth() { return width; }
 	inline int GetHeight() { return height; }

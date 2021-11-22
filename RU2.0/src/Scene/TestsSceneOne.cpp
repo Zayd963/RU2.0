@@ -1,7 +1,7 @@
 #include "TestsSceneOne.h"
 #include <iostream>
 #include <array>
-#include "core/Renderer2D.h"
+
 
 unsigned int offset = 0;
 Vertex positions[512];
@@ -93,12 +93,13 @@ void TestsSceneOne::Update(float deltaTime)
 
 void TestsSceneOne::Render()
 {
-    texture->Bind();
-    texture1->Bind(1);
-    texture2->Bind(2);
+    texture->Bind(1);
+    texture1->Bind(2);
+    texture2->Bind(3);
     Renderer2D::Begin(*camera);
-    Renderer2D::DrawQuad({ 0, 0, 0 }, 100, 0);
+    Renderer2D::DrawQuad({ 0, 0, 0 }, 100, glm::vec4(1.0, 0.0, 1.0, 1.0));
     Renderer2D::DrawQuad({ 200, -50, 0 }, 100, 1);
+    Renderer2D::DrawQuad({ 500, -50, 0 }, 1000, 3);
     Renderer2D::DrawQuad({ 300, -50, 0 }, 100, 2);
     Renderer2D::End();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include<GL/glew.h>
+#include "Engine.h"
 #define ASSERT(x) if(!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
     x;\
@@ -8,7 +9,7 @@
 
 static void GLClearError()
 {
-    while (glGetError() != GL_NO_ERROR);
+    while (glGetError() != GL_NO_ERROR && glGetError() != GL_CONTEXT_LOST);
 }
 
 static bool GLLogCall(const char* function, const char* file, int line)

@@ -1,6 +1,5 @@
-﻿  TestsSceneOne.cpp
-C:\Dev\RU2.0\RU2.0\src\Scene\TestsSceneOne.cpp(39,24): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Engine.cpp
-C:\Dev\RU2.0\RU2.0\src\core\Engine.cpp(56,29): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Engine.cpp
+C:\Dev\RU2.0\RU2.0\src\core\Engine.cpp(57,29): warning C4305: 'argument': truncation from 'double' to 'float'
+  Source.cpp
   Generating Code...
   RU2.0.vcxproj -> C:\Dev\RU2.0\x64\Debug\RU2.0.exe
