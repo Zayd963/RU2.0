@@ -53,7 +53,7 @@ void Engine::Render()
         /* Render here */
         renderer.Clear();
 
-        scene->Update(0);
+        scene->Update(0.0016);
         scene->Render();
 
         ImGui_ImplGlfwGL3_NewFrame();

@@ -145,6 +145,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\Renderer2D.cpp" />
+    <ClCompile Include="src\core\Camera.cpp" />
     <ClCompile Include="src\core\Engine.cpp" />
     <ClCompile Include="src\core\IndexBuffer.cpp" />
     <ClCompile Include="src\core\Renderer.cpp" />
@@ -301,6 +303,8 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\Renderer2D.h" />
+    <ClInclude Include="src\core\Camera.h" />
     <ClInclude Include="src\core\Debug.h" />
     <ClInclude Include="src\core\Engine.h" />
     <ClInclude Include="src\core\IndexBuffer.h" />

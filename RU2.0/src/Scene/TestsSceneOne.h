@@ -6,6 +6,9 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "core/Texture.h"
 #include <memory>
+#include "core/Camera.h"
+
+
 class TestsSceneOne : public Scene
 {
 public:
@@ -16,18 +19,13 @@ public:
 	void IMGUIRender() override;
 
 	~TestsSceneOne() {};
-
+	
 private:
-	glm::vec3 translationa;
-	glm::vec3 translationb;
-	glm::mat4 proj;
-	glm::mat4 view;
-	std::unique_ptr<VertexArray> vao;
-	std::unique_ptr<VertexBuffer> vbo;
-	std::unique_ptr<IndexBuffer> ibo;
-	std::unique_ptr<Shader> shader;
 	std::unique_ptr<Texture> texture;
 	std::unique_ptr<Texture> texture1;
 	std::unique_ptr<Texture> texture2;
+	std::unique_ptr<Camera> camera;
+
+
 };
 
