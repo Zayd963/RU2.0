@@ -7,6 +7,7 @@ struct Vertex
 	glm::vec3 position;
 	glm::vec2 texCoord;
 	glm::vec4 color;
+	
 	float texIndex;
 };
 
@@ -22,6 +23,8 @@ struct RenderData
 	std::unique_ptr<VertexBuffer> vbo;
 	std::unique_ptr<IndexBuffer> ibo;
 	std::unique_ptr<Shader> shader;
+
+	glm::vec4 quadPositions[4];
 };
 
 class Renderer2D
@@ -29,14 +32,13 @@ class Renderer2D
 public:
 	static void Init();
 	static void Begin(Camera &camera);
-	static void DrawQuad(glm::vec3 position, float size, float texIndex);
-	static void DrawQuad(glm::vec3 position, float size, glm::vec4 color);
+	static void DrawQuad(glm::vec3 position,float size, float texIndex, float angle = 0.0f, glm::vec4 color = glm::vec4(1.0f));
+	static void DrawQuad(glm::vec3 position,float size, glm::vec4 color, float angle = 0.0f);
 	static void End();
 	static void ShutDown();
 private:
 	static void Flush();
 	static void StartBatch();
-	static Vertex* renderDataBase;
 	static unsigned int offset;
 };
 

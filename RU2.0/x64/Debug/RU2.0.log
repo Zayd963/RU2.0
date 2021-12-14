@@ -1,5 +1,2 @@
-﻿  Engine.cpp
-C:\Dev\RU2.0\RU2.0\src\core\Engine.cpp(57,29): warning C4305: 'argument': truncation from 'double' to 'float'
-  Source.cpp
-  Generating Code...
+﻿  TestsSceneOne.cpp
   RU2.0.vcxproj -> C:\Dev\RU2.0\x64\Debug\RU2.0.exe

@@ -8,8 +8,9 @@
 #include <memory>
 #include "core/Renderer2D.h"
 #include "core/Camera.h"
+#include "ECS/Components.h"
 
-
+#include <vector>
 class TestsSceneOne : public Scene
 {
 public:
@@ -26,7 +27,6 @@ private:
 	std::unique_ptr<Texture> texture1;
 	std::unique_ptr<Texture> texture2;
 	std::unique_ptr<Camera> camera;
-
 
 };
 
